@@ -10,6 +10,8 @@ public class QueryPreferences {
     // used as the key for the query preference
     private static final String PREF_SEARCH_QUERY = "searchQuery";
 
+    private static final String PREF_LAST_RESULT_ID = "lastResultId";
+
     /*
      * returns the query valued stored in shared preferences by first acquiring
      * the default SharedPreferences for the given context
@@ -24,6 +26,18 @@ public class QueryPreferences {
         PreferenceManager.getDefaultSharedPreferences(context)
                 .edit()
                 .putString(PREF_SEARCH_QUERY, query)
+                .apply();
+    }
+
+    public static String getLastResultId(Context context) {
+        return PreferenceManager.getDefaultSharedPreferences(context)
+                .getString(PREF_LAST_RESULT_ID, null);
+    }
+
+    public static void setLastResultId(Context context, String lastResultId) {
+        PreferenceManager.getDefaultSharedPreferences(context)
+                .edit()
+                .putString(PREF_LAST_RESULT_ID, lastResultId)
                 .apply();
     }
 }
