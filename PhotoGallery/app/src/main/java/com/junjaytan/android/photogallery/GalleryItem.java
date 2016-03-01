@@ -1,5 +1,7 @@
 package com.junjaytan.android.photogallery;
 
+import android.net.Uri;
+
 /**
  * Created by junjaytan on 2/11/16.
  */
@@ -7,6 +9,8 @@ public class GalleryItem {
     private String mCaption;
     private String mId;
     private String mUrl;
+
+    private String mOwner;
 
     public String getmCaption() {
         return mCaption;
@@ -30,6 +34,22 @@ public class GalleryItem {
 
     public void setmUrl(String mUrl) {
         this.mUrl = mUrl;
+    }
+
+    public String getOwner() {
+        return mOwner;
+    }
+
+    public void setOwner(String owner) {
+        mOwner = owner;
+    }
+
+    public Uri getPhotoPageUri() {
+        return Uri.parse("http://www.flickr.com/photos/")
+                .buildUpon()
+                .appendPath(mOwner)
+                .appendPath(mId)
+                .build();
     }
 
     @Override

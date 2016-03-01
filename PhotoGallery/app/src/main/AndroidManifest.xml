@@ -23,6 +23,12 @@
             </intent-filter>
         </activity>
 
+        <!-- tell android to handle some of its own configuration changes if keyboard is opened/closed,
+        if orientation changes, or if screen size changes
+        -->
+        <activity android:name=".PhotoPageActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"/>
+
         <service android:name=".PollService" />
 
         <receiver android:name=".StartupReceiver">
